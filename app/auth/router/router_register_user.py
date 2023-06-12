@@ -9,6 +9,9 @@ from . import router
 class RegisterUserRequest(AppModel):
     email: str
     password: str
+    phone: str
+    name:str
+    city: str
 
 
 class RegisterUserResponse(AppModel):
@@ -16,7 +19,7 @@ class RegisterUserResponse(AppModel):
 
 
 @router.post(
-    "/users", status_code=status.HTTP_201_CREATED, response_model=RegisterUserResponse
+    "/", status_code=status.HTTP_201_CREATED, response_model=RegisterUserResponse
 )
 def register_user(
     input: RegisterUserRequest,

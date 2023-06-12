@@ -14,6 +14,11 @@ from .dependencies import parse_jwt_user_data
 class GetMyAccountResponse(AppModel):
     id: Any = Field(alias="_id")
     email: str
+    phone: str
+    city: str
+    name: str
+
+
 
 
 @router.get("/users/me", response_model=GetMyAccountResponse)
@@ -21,5 +26,7 @@ def get_my_account(
     jwt_data: JWTData = Depends(parse_jwt_user_data),
     svc: Service = Depends(get_service),
 ) -> dict[str, str]:
+    print(jwt_data.user_id, 'JWT DATA')
     user = svc.repository.get_user_by_id(jwt_data.user_id)
+    
     return user
