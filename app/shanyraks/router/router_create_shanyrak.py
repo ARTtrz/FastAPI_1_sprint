@@ -17,12 +17,19 @@ class ICreateShanyrak(AppModel):
     rooms_count: int
     description: str
 
-
+class IResponseModel(AppModel):
+    _id: str
+    type: str
+    price: int
+    address: str
+    area: int
+    rooms_count: int
+    description: str
 
 
 
 @router_shanyrak.post(
-    "/", status_code=status.HTTP_201_CREATED
+    "/", status_code=status.HTTP_201_CREATED, response_model = IResponseModel
 )
 def create_shanyrak(
     
@@ -32,7 +39,8 @@ def create_shanyrak(
 ) -> dict[str, str]:
 
 
-    svc.repository.create_shanyrak(input.dict())
+    item = svc.repository.create_shanyrak(input.dict())
+    return IResponseModel(item)._id
 
-    return {"message": "ok"}
+     
     

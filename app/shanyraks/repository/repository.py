@@ -13,7 +13,7 @@ class ShanyrakRepository:
             "type": shanyrak["type"],
             "price": shanyrak["price"],
             "address": shanyrak["address"],
-            "area": shanyrak["area"],
+           "area": shanyrak["area"],
             "rooms_count": shanyrak["rooms_count"],
             "description": shanyrak["description"]
         }
@@ -21,6 +21,8 @@ class ShanyrakRepository:
         
 
         self.database["shanyraks"].insert_one(payload)
+    
+        
 
     def findById(self, id:str):
         shanyrak = self.database["shanyraks"].find_one({"_id": ObjectId(id) })
