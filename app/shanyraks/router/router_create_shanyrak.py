@@ -29,7 +29,7 @@ class IResponseModel(AppModel):
 
 
 @router_shanyrak.post(
-    "/", status_code=status.HTTP_201_CREATED, response_model = IResponseModel
+    "/", status_code=status.HTTP_201_CREATED
 )
 def create_shanyrak(
     
@@ -40,7 +40,7 @@ def create_shanyrak(
 
 
     item = svc.repository.create_shanyrak(input.dict())
-    return IResponseModel(item)._id
+    return {"message": "created"}
 
      
     
