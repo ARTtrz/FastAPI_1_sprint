@@ -19,12 +19,6 @@ class ICreateShanyrak(AppModel):
 
 class IResponseModel(AppModel):
     _id: str
-    type: str
-    price: int
-    address: str
-    area: int
-    rooms_count: int
-    description: str
 
 
 
@@ -40,7 +34,7 @@ def create_shanyrak(
 
 
     item = svc.repository.create_shanyrak(input.dict())
-    return {"message": "created"}
+    return item
 
      
     

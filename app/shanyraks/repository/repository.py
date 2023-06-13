@@ -20,8 +20,8 @@ class ShanyrakRepository:
 
         
 
-        self.database["shanyraks"].insert_one(payload)
-    
+        item = self.database["shanyraks"].insert_one(payload)
+        return {"_id": str(item.inserted_id)}
         
 
     def findById(self, id:str):
