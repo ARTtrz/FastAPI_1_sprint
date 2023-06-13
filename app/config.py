@@ -26,7 +26,8 @@ fastapi_config: dict[str, Any] = {
 
 # MongoDB connection
 client = MongoClient(
-    f"mongodb://{env.MONGOUSER}:{env.MONGOPASSWORD}@{env.MONGOHOST}:{env.MONGOPORT}/"
+    # f"mongodb://{env.MONGOUSER}:{env.MONGOPASSWORD}@{env.MONGOHOST}:{env.MONGOPORT}/"
+    f"mongodb+srv://artemkim2006:Artyom_2006@cluster0.rescgtm.mongodb.net/?retryWrites=true&w=majority"
 )
 
 # MongoDB database
